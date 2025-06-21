@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How AI Understands Language – A Beginner's Guide to NLP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f9f7ff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, #6a0dad, #ff6ec4);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .content {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      box-shadow: 0 10px 20px rgba(106, 13, 173, 0.1);
+      border-radius: 10px;
+      margin-top: -2rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .content img {
+      width: 50%;
+      border-radius: 10px;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.5rem 1.5rem;
+      background: linear-gradient(to right, #7b5aff, #ff6ec4);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: linear-gradient(to right, #ff6ec4, #7b5aff);
+      transform: translateY(-2px);
+    }
+
+    h2 {
+      color: #6a0dad;
+      margin-top: 2rem;
+      border-bottom: 2px solid #f0e6ff;
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      color: #8a4fff;
+    }
+
+    blockquote {
+      background: #f9f5ff;
+      border-left: 4px solid #8a4fff;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e0d6ff;
+    }
+
+    th {
+      background-color: #f3eeff;
+      color: #6a0dad;
+    }
+
+    tr:hover {
+      background-color: #faf7ff;
+    }
+
+    .code-block {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .caption {
+      font-size: 0.9rem;
+      color: #666;
+      text-align: center;
+      margin-top: -1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight {
+      background-color: #f0e6ff;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    .checklist {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .checklist li {
+      padding-left: 1.5em;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .checklist li:before {
+      content: "✓";
+      color: #6a0dad;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .image-placeholder {
+      background: #f0e6ff;
+      border: 2px dashed #8a4fff;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      color: #6a0dad;
+      font-weight: bold;
+      margin: 1.5rem 0;
+    }
+
+    .nlp-concept {
+      background: #f5f2ff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .nlp-concept h4 {
+      margin-top: 0;
+      color: #6a0dad;
+      border-bottom: 1px solid #e0d6ff;
+      padding-bottom: 0.5rem;
+    }
+
+    .tool-table {
+      background: #f5f2ff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .use-cases {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .use-case {
+      background: #f0e6ff;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .next-article {
+      background: #e6f7ff;
+      border-left: 4px solid #00a8ff;
+      padding: 1rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>How AI Understands Language: An NLP Guide</h1>
+  </header>
+  <div class="content">
+    <p>Have you ever wondered how AI chatbots reply like humans, or how Google Translate magically turns one language into another? That's the power of <span class="highlight">Natural Language Processing (NLP)</span> — the branch of AI that helps machines understand and generate human language.</p>
+
+    <p>But how does it work, really? In this beginner's guide, I'll break down how AI reads, processes, and understands language, using real-world examples and simple analogies.</p>
+
+    <img src="a3i1.jpg" alt="NLP" />
+    <p class="caption">Figure 1: Dagram showing Brain to Machine interaction. Source: Medium</p>
+
+    <h2>1. What is NLP?</h2>
+    <p>Natural Language Processing is how machines:</p>
+    <ul>
+      <li>Read and interpret text or speech</li>
+      <li>Analyze grammar, meaning, and sentiment</li>
+      <li>Generate responses (like I'm doing right now)</li>
+    </ul>
+
+    <p>NLP powers:</p>
+    <ul>
+      <li>Chatbots (like ChatGPT)</li>
+      <li>Voice assistants (Siri, Alexa)</li>
+      <li>Spam filters</li>
+      <li>Translation apps</li>
+      <li>Sentiment analysis (e.g., in social media monitoring)</li>
+    </ul>
+
+    <h2>2. How AI "Reads" Text</h2>
+    <p>Let's say you write: <strong>"The movie was awesome!"</strong></p>
+    <p>The AI doesn't "read" this like a human. Instead, it:</p>
+    <ol>
+      <li><strong>Tokenizes</strong> the sentence → breaks it into words: <code>["The", "movie", "was", "awesome"]</code></li>
+      <li><strong>Converts words into numbers</strong> using embeddings (like Word2Vec or BERT).</li>
+      <li><strong>Feeds those numbers into a model</strong> that looks for patterns.</li>
+    </ol>
+
+    <img src="a3i2.png" alt="NLP" />
+    <p class="caption">Figure 2: A chart showing NLP complete process. Source: Medium</p>
+
+    <h2>3. Key Concepts in NLP (Simplified)</h2>
+
+    <div class="nlp-concept">
+      <h4>A. Tokenization</h4>
+      <p>Breaking down sentences into words, subwords, or characters.</p>
+      <div class="code-block">
+from nltk.tokenize import word_tokenize
+word_tokenize("AI is amazing")
+# Output: ['AI', 'is', 'amazing']
+      </div>
+    </div>
+
+    <div class="nlp-concept">
+      <h4>B. Word Embeddings</h4>
+      <p>Words are turned into vectors (groups of numbers) so machines can understand them mathematically. Example: "king" and "queen" might have similar vectors.</p>
+    </div>
+
+    <div class="nlp-concept">
+      <h4>C. Stop Words</h4>
+      <p>Common words like "is", "the", "in" that are often removed to reduce noise.</p>
+    </div>
+
+    <div class="nlp-concept">
+      <h4>D. Named Entity Recognition (NER)</h4>
+      <p>AI can detect names, places, dates. E.g., "Barack Obama was born in Hawaii" → detects "Barack Obama" as a person and "Hawaii" as a location.</p>
+    </div>
+
+    <div class="nlp-concept">
+      <h4>E. Sentiment Analysis</h4>
+      <p>AI determines emotional tone — positive, negative, or neutral.</p>
+    </div>
+
+    <h2>4. Modern NLP: Transformers & BERT</h2>
+    <p>Today's NLP is powered by <span class="highlight">transformer models</span> like:</p>
+    <ul>
+      <li><strong>BERT</strong> (Bidirectional Encoder Representations from Transformers)</li>
+      <li><strong>GPT</strong> (Generative Pre-trained Transformer)</li>
+    </ul>
+
+    <p>These models understand context much better than earlier approaches. For example, the word "bank" in:</p>
+    <ul>
+      <li>"I sat on the river bank"</li>
+      <li>"I deposited money at the bank"</li>
+    </ul>
+    <p>Older models would treat both "bank"s the same. Transformers know they mean different things based on context.</p>
+
+    <h2>5. Tools You Can Try as a Beginner</h2>
+    <div class="tool-table">
+      <table>
+        <tr>
+          <th>Tool</th>
+          <th>Use</th>
+        </tr>
+        <tr>
+          <td>Hugging Face </td>
+          <td>Access pre-trained NLP models</td>
+        </tr>
+        <tr>
+          <td>spaCy</td>
+          <td>Fast, production-ready NLP toolkit</td>
+        </tr>
+        <tr>
+          <td>NLTK</td>
+          <td>Good for learning & experimentation</td>
+        </tr>
+        <tr>
+          <td>OpenAI API</td>
+          <td>Try ChatGPT/GPT models in your projects</td>
+        </tr>
+      </table>
+    </div>
+
+    <p>Example: Use Hugging Face to analyze sentiment</p>
+    <div class="code-block">
+from transformers import pipeline
+classifier = pipeline("sentiment-analysis")
+classifier("I love this AI article!")
+    </div>
+
+    <h2>6. Real-World Use Cases</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <strong>Customer Service</strong>: Chatbots & support ticket classification
+      </div>
+      <div class="use-case">
+        <strong>Healthcare</strong>: Analyzing patient reports
+      </div>
+      <div class="use-case">
+        <strong>Finance</strong>: Summarizing legal documents
+      </div>
+      <div class="use-case">
+        <strong>Education</strong>: AI tutors that personalize answers
+      </div>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>NLP is what lets AI bridge the gap between 1s and 0s and actual human communication. Even if you're not a linguist or computer scientist, understanding the basics of NLP opens the door to building smarter apps and interacting with AI more effectively.</p>
+
+    <blockquote>
+      Language is messy, complex, and full of nuance — but that's what makes NLP one of the most fascinating fields in AI.
+    </blockquote>
+
+
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+  </div>
+</body>
+</html>

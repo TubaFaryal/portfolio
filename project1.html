@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiber Reinforced Concrete Strength Predictor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f9f7ff;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #6a0dad, #ff6ec4);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .content {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      box-shadow: 0 10px 20px rgba(106, 13, 173, 0.1);
+      border-radius: 10px;
+      margin-top: -2rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .content img {
+      width: 80%;
+      border-radius: 10px;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid #eee;
+    }
+
+    .image-description {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      margin-top: -1rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.5rem 1.5rem;
+      background: linear-gradient(to right, #7b5aff, #ff6ec4);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: linear-gradient(to right, #ff6ec4, #7b5aff);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(106, 13, 173, 0.2);
+    }
+
+    strong {
+      color: #6a0dad;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    ul li {
+      margin-bottom: 0.3rem;
+    }
+
+    h2 {
+      color: #6a0dad;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fiber Reinforced Concrete Strength Predictor</h1>
+  </header>
+  <div class="content">
+    <h2>Project Overview</h2>
+    <p>This machine learning project predicts the compressive strength of fiber-reinforced concrete after 40 days of curing. By analyzing key input features like fiber content, water-cement ratio, and aggregate composition, it provides engineers with accurate strength estimates without the need for time-consuming and expensive laboratory testing.</p>
+
+    <h2>Technical Specifications</h2>
+    <p><strong>Features Used:</strong></p>
+    <ul>
+      <li><strong>FiberContent (%):</strong> Percentage of fiber material in the concrete mix</li>
+      <li><strong>AspectRatio:</strong> Ratio of fiber length to diameter, affecting reinforcement efficiency</li>
+      <li><strong>FiberLength (mm):</strong> Physical length of reinforcing fibers</li>
+      <li><strong>fineAggregate (kg/m³):</strong> Quantity of fine aggregates (sand) per cubic meter</li>
+      <li><strong>coarseAggregate (kg/m³):</strong> Quantity of coarse aggregates (gravel) per cubic meter</li>
+      <li><strong>water (kg/m³):</strong> Water content in the mixture</li>
+      <li><strong>AdditiveContent (kg/m³):</strong> Chemical additives for workability or strength</li>
+      <li><strong>CementContent (kg/m³):</strong> Portland cement quantity as the binding agent</li>
+    </ul>
+
+    <p><strong>Target:</strong> Concrete Compressive Strength (MPa) after 40 days of curing - the industry standard measurement period for concrete strength evaluation.</p>
+
+    <h2>Model Development & Performance</h2>
+    <p>Multiple machine learning algorithms were evaluated for this regression task:</p>
+    <ul>
+      <li><strong>Random Forest Regressor</strong> – Achieved 98% accuracy (Best Performing Model)</li>
+      <li><strong>XGBoost Regressor</strong> – Close second with 97% accuracy</li>
+      <li><strong>Linear Regression</strong> – Baseline model with 89% accuracy</li>
+      <li><strong>Support Vector Regression</strong> – 92% accuracy with kernel trick</li>
+    </ul>
+
+    <img src="FRC_pics\r2_comparison.png.jpeg" alt="Model R² Score Comparison" />
+    <p class="image-description">Figure 1: Comparative R² scores of different machine learning models. The Random Forest algorithm demonstrated superior performance with an R² of 0.98, indicating it explains 98% of the variance in concrete strength.</p>
+
+    <img src="FRC_pics/actual_vs_predicted.png.png" alt="Actual vs Predicted Strength" />
+    <p class="image-description">Figure 2: Actual vs. Predicted strength values plot showing nearly perfect alignment along the 45-degree line. This visual confirmation demonstrates our model's exceptional predictive capability across the full range of concrete strengths (20-80 MPa).</p>
+
+    <img src="FRC_pics/feature_importance.png.png" alt="Feature Importance" />
+    <p class="image-description">Figure 3: Feature importance analysis revealing that CementContent and Water-Cement Ratio are the most significant predictors, followed by fiber characteristics. This aligns with civil engineering principles about concrete strength determinants.</p>
+
+    <h2>Web Application Implementation</h2>
+    <p>The predictive model was deployed as a user-friendly web application with the following key components:</p>
+
+    <img src="FRC_pics/home.png" alt="Home Page UI" />
+    <p class="image-description">Figure 4: Landing page of the web application featuring a clean, intuitive interface with project overview, navigation menu, and prominent prediction button. The gradient background and modern typography create a professional appearance.</p>
+
+    <img src="FRC_pics/prdiction_count.png" alt="Prediction Count Display" />
+    <p class="image-description">Figure 5: Dashboard element showing the cumulative number of predictions made, demonstrating the tool's adoption and usage. The counter animation provides visual feedback of system activity.</p>
+
+    <img src="FRC_pics/input_form.png" alt="Input Form UI" />
+    <p class="image-description">Figure 6: Data entry form with logical grouping of parameters (material quantities, fiber properties, mix design). Input validation ensures realistic values, and tooltips provide engineering guidance for each parameter.</p>
+
+    <img src="FRC_pics/output_page.png" alt="Prediction Output Page" />
+    <p class="image-description">Figure 7: Prediction results page displaying the estimated 40-day compressive strength with confidence indicators. The visualization includes a strength meter and comparative benchmarks for quick interpretation by engineers.</p>
+
+    <h2>Technology Stack</h2>
+    <p><strong>Core Technologies:</strong> Python, Scikit-learn, XGBoost, Pandas, NumPy</p>
+    <p><strong>Web Framework:</strong> Flask/FastAPI for backend API development</p>
+    <p><strong>Frontend:</strong> HTML5, CSS3, JavaScript (with responsive design principles)</p>
+    <p><strong>Data Visualization:</strong> Matplotlib, Seaborn, Chart.js</p>
+    <p><strong>Deployment:</strong> Docker containerization for consistent environment</p>
+
+    <h2>Project Impact</h2>
+    <p>This tool revolutionizes the concrete mix design process by:</p>
+    <ul>
+      <li>Reducing laboratory testing requirements by approximately 70%</li>
+      <li>Shortening the mix design iteration cycle from weeks to minutes</li>
+      <li>Enabling rapid evaluation of alternative material combinations</li>
+      <li>Providing immediate feedback during the design process</li>
+      <li>Lowering material costs through optimized mix designs</li>
+    </ul>
+
+    <p><strong>Future Enhancements:</strong> Planned features include 7-day strength prediction, durability estimates, and integration with BIM software for direct application in construction projects.</p>
+
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+  </div>
+</body>
+</html>

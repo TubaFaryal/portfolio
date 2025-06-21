@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How I Clean My Datasets Before Feeding Them to an AI Model</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f9f7ff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, #6a0dad, #ff6ec4);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .content {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      box-shadow: 0 10px 20px rgba(106, 13, 173, 0.1);
+      border-radius: 10px;
+      margin-top: -2rem;
+      z-index: 2;
+      position: relative;
+    }
+
+    .content img {
+      width: 50%;
+      border-radius: 10px;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.5rem 1.5rem;
+      background: linear-gradient(to right, #7b5aff, #ff6ec4);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: linear-gradient(to right, #ff6ec4, #7b5aff);
+      transform: translateY(-2px);
+    }
+
+    h2 {
+      color: #6a0dad;
+      margin-top: 2rem;
+      border-bottom: 2px solid #f0e6ff;
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      color: #8a4fff;
+    }
+
+    blockquote {
+      background: #f9f5ff;
+      border-left: 4px solid #8a4fff;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e0d6ff;
+    }
+
+    th {
+      background-color: #f3eeff;
+      color: #6a0dad;
+    }
+
+    tr:hover {
+      background-color: #faf7ff;
+    }
+
+    .code-block {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .caption {
+      font-size: 0.9rem;
+      color: #666;
+      text-align: center;
+      margin-top: -1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight {
+      background-color: #f0e6ff;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    .checklist {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .checklist li {
+      padding-left: 1.5em;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .checklist li:before {
+      content: "✓";
+      color: #6a0dad;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .image-placeholder {
+      background: #f0e6ff;
+      border: 2px dashed #8a4fff;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      color: #6a0dad;
+      font-weight: bold;
+      margin: 1.5rem 0;
+    }
+
+    .tool-table {
+      background: #f5f2ff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .mistakes {
+      background: #fff5f5;
+      border-left: 4px solid #ff6b6b;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .next-article {
+      background: #e6f7ff;
+      border-left: 4px solid #00a8ff;
+      padding: 1rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>How I Clean Data Before Training an AI Model</h1>
+  </header>
+  <div class="content">
+    <p>Before the neural networks, the GPU crunching, and the magic of predictions, there's one vital (and often messy) step in every AI project: <span class="highlight">data cleaning</span>. It's not glamorous, but it's essential. Even the smartest models in the world can't learn properly from dirty, inconsistent, or incomplete data.</p>
+
+    <p>In this article, I'll walk you through how I clean my datasets before training any AI model — including the tools I use, mistakes I've made, and what I've learned.</p>
+
+    <img src="a4i1.jpeg" alt="Data Augmentation" />
+    <p class="caption">Figure 1: A diagram showing data cleaning process. Source: Medium</p>
+
+    <h2>1. Why Data Cleaning Matters</h2>
+    <p>When I first started working with AI, I was excited to jump right into model building. But over time, I realized something important: <strong>bad data = bad model</strong>, no matter how powerful the algorithm.</p>
+
+    <p>Common problems I've faced:</p>
+    <ul>
+      <li>Missing values or nulls</li>
+      <li>Inconsistent labels or formats</li>
+      <li>Outliers or incorrect entries</li>
+      <li>Unbalanced classes (especially in classification tasks)</li>
+    </ul>
+
+    <p>Cleaning the data first has helped me:</p>
+    <ul>
+      <li>Increase model accuracy</li>
+      <li>Reduce bias</li>
+      <li>Improve model generalization</li>
+      <li>Understand the data better</li>
+    </ul>
+
+    <h2>2. My Go-To Data Cleaning Steps</h2>
+    <p>Here's my typical step-by-step process, whether I'm working on structured data (like CSVs) or image/text datasets:</p>
+
+    <h3>Step 1: Load and Inspect</h3>
+    <ul>
+      <li>Use <code>pandas</code> for tabular data.</li>
+      <li>Use <code>matplotlib</code> or <code>seaborn</code> for visual inspection.</li>
+    </ul>
+    <div class="code-block">
+import pandas as pd
+df = pd.read_csv("data.csv")
+print(df.info())
+print(df.describe())
+    </div>
+
+    <h3>Step 2: Handle Missing Values</h3>
+    <ul>
+      <li>Drop columns or rows (if many values are missing).</li>
+      <li>Use <strong>imputation</strong>: fill with mean/median/mode or a constant.</li>
+      <li>For images, I check for broken links or corrupted files.</li>
+    </ul>
+    <div class="code-block">
+df.fillna(df.mean(), inplace=True)
+    </div>
+
+    <h3>Step 3: Clean and Standardize</h3>
+    <ul>
+      <li>Make sure formats are consistent (e.g., date formats, units).</li>
+      <li>Normalize or scale numeric features.</li>
+      <li>For text: remove punctuation, stop words, or convert to lowercase.</li>
+    </ul>
+
+    <h3>Step 4: Remove Duplicates and Outliers</h3>
+    <ul>
+      <li>Remove rows that repeat.</li>
+      <li>Visualize distributions to find outliers using boxplots or Z-scores.</li>
+    </ul>
+
+    <h3>Step 5: Encode Categorical Variables</h3>
+    <ul>
+      <li>Use one-hot encoding or label encoding.</li>
+    </ul>
+
+    <h3>Step 6: Balance the Dataset (If Needed)</h3>
+    <ul>
+      <li>Use techniques like SMOTE, downsampling, or oversampling.</li>
+    </ul>
+
+    <img src="a4i2.png" alt="Data Augmentation" />
+    <p class="caption">Figure 2: A comaprison of uncleaned and clean data . Source: Medium</p>
+
+    <h2>3. Tools I Use Regularly</h2>
+    <div class="tool-table">
+      <table>
+        <tr>
+          <th>Tool/Library</th>
+          <th>Use</th>
+        </tr>
+        <tr>
+          <td><code>pandas</code></td>
+          <td>Data loading and cleaning</td>
+        </tr>
+        <tr>
+          <td><code>numpy</code></td>
+          <td>Handling numerical values</td>
+        </tr>
+        <tr>
+          <td><code>scikit-learn</code></td>
+          <td>Preprocessing, encoding, scaling</td>
+        </tr>
+        <tr>
+          <td><code>matplotlib/seaborn</code></td>
+          <td>Visualization of distributions</td>
+        </tr>
+        <tr>
+          <td><code>OpenRefine</code></td>
+          <td>Cleaning messy tabular data interactively</td>
+        </tr>
+        <tr>
+          <td><code>Hugging Face Datasets</code></td>
+          <td>Working with large NLP datasets</td>
+        </tr>
+        <tr>
+          <td><code>Label Studio</code></td>
+          <td>Cleaning and correcting image labels</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2>4. Mistakes I've Learned From</h2>
+    <div class="mistakes">
+      <ul>
+        <li><strong>Over-cleaning:</strong> Once I removed too many rows and ended up with too little data.</li>
+        <li><strong>Wrong imputation:</strong> Filling missing values with means ruined a time-series project.</li>
+        <li><strong>Not saving cleaned data:</strong> I had to redo the cleaning process from scratch multiple times. (Always save intermediate versions!)</li>
+      </ul>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>Cleaning data isn't just a boring step — it's the foundation of any successful AI model. The more time I spend on it, the better results I get. If you're new to AI, focus less on fancy models and more on understanding your data.</p>
+
+    <blockquote>
+      Remember: a clean dataset is like clean fuel. If you put garbage in, you'll get garbage out.
+    </blockquote>
+
+
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+  </div>
+</body>
+</html>

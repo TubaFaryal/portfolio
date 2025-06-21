@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Pipeline Inspection System | AI-Powered Anomaly Detection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #6a0dad;
+      --secondary: #ff6ec4;
+      --accent: #7b5aff;
+      --dark: #333;
+      --light: #f9f7ff;
+      --gray: #6c757d;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+      background-size: 100% 100%;
+      opacity: 0.3;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 700;
+      position: relative;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .content {
+      padding: 3rem;
+      max-width: 1100px;
+      margin: -3rem auto 2rem;
+      background: white;
+      box-shadow: 0 15px 30px rgba(106, 13, 173, 0.1);
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+
+    .image-card {
+      flex: 1 1 45%;
+      min-width: 300px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .image-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid #eee;
+    }
+
+    .image-caption {
+      padding: 1.2rem;
+      background: white;
+    }
+
+    .image-caption h3 {
+      margin: 0 0 0.5rem;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    .image-caption p {
+      margin: 0;
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--accent);
+    }
+
+    .feature-card h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 3rem;
+      padding: 0.8rem 2rem;
+      background: linear-gradient(to right, var(--accent), var(--secondary));
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(123, 90, 255, 0.2);
+    }
+
+    .back-link:hover {
+      background: linear-gradient(to right, var(--secondary), var(--accent));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(123, 90, 255, 0.3);
+    }
+
+    .back-link::before {
+      content: "←";
+      margin-right: 8px;
+      font-size: 1.1rem;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 2.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #f0f0f0;
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      color: var(--primary);
+      margin-top: 1.8rem;
+      font-size: 1.4rem;
+    }
+
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+    }
+
+    .tech-badge {
+      background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(106,13,173,0.05), rgba(255,110,196,0.05));
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 0 8px 8px 0;
+      margin: 2rem 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0.5rem 0;
+    }
+
+    .stat-label {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        padding: 2rem 1.5rem;
+        margin: -2rem auto 1rem;
+      }
+      
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .image-card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Live Pipeline Inspection System</h1>
+  </header>
+  
+  <div class="content">
+    <div class="highlight-box">
+      <p><strong>Revolutionizing infrastructure monitoring:</strong> Our AI-powered system detects pipeline anomalies in real-time using computer vision, enabling proactive maintenance and preventing catastrophic failures in oil & gas, water, and industrial pipeline networks.</p>
+    </div>
+
+    
+
+    <h2>Core Detection Capabilities</h2>
+    <div class="image-container">
+      <div class="image-card">
+        <img src="pipeline images\healthy.png" alt="Detection Results with Bounding Boxes" />
+        <div class="image-caption">
+          <h3>Anomaly Identification</h3>
+          <p>YOLOv8 model accurately identifies and classifies pipeline defects with bounding boxes (94% accuracy). Different colors indicate severity levels from early corrosion (yellow) to critical fractures (red).</p>
+        </div>
+      </div>
+      
+      <div class="image-card">
+        <img src="pipeline images\corrision.png" alt="Corrosion Alert Example" />
+        <div class="image-caption">
+          <h3>Corrosion Detection</h3>
+          <p>System flags early-stage corrosion with visual indicators and audible alerts. The interface provides severity assessment and recommended actions to prevent further deterioration.</p>
+        </div>
+      </div>
+      
+      <div class="image-card">
+        <img src="pipeline images\fracture.png" alt="Fracture Alert Example" />
+        <div class="image-caption">
+          <h3>Fracture Detection</h3>
+          <p>Immediate alerting for structural fractures with location tracking. Critical alerts trigger emergency protocols and automatically notify maintenance teams with GPS coordinates.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Remote Monitoring Features</h2>
+    <div class="image-container">
+      <div class="image-card">
+        <img src="pipeline images\ip.png" alt="IP Streaming Interface" />
+        <div class="image-caption">
+          <h3>Live Streaming Module</h3>
+          <p>Secure IP-based video streaming allows remote monitoring from any location. Features include adjustable quality settings, bandwidth optimization, and encrypted data transmission.</p>
+        </div>
+      </div>
+      
+      <div class="image-card">
+        <img src="pipeline images\streaming.png" alt="Mobile Monitoring Example" />
+        <div class="image-caption">
+          <h3>Mobile Accessibility</h3>
+          <p>Field technicians can view inspection results on mobile devices with the same detection accuracy as desktop systems, enabling on-the-spot decision making.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Technical Specifications</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">94%</div>
+        <div class="stat-label">Detection Accuracy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">15K</div>
+        <div class="stat-label">Training Images</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">50ms</div>
+        <div class="stat-label">Processing Delay</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Defect Classes</div>
+      </div>
+    </div>
+
+    <h3>Dataset Composition</h3>
+    <ul>
+      <li><strong>15,000 professionally annotated images</strong> (5,000 per defect class)</li>
+      <li><strong>Classes:</strong> Healthy Pipeline, Corrosion, Structural Fracture</li>
+      <li><strong>Data augmentation:</strong> Applied rotation, lighting variations, and synthetic defects</li>
+      <li><strong>Validation:</strong> 80/20 train-test split with k-fold cross validation</li>
+    </ul>
+
+    <h2>Deployment Options</h2>
+    <div class="image-container">
+      <div class="image-card">
+        <img src="pipeline images\drone.jpg" alt="Drone Integration" />
+        <div class="image-caption">
+          <h3>Aerial Drone Inspection</h3>
+          <p>Compact version for UAV deployment with optimized model for aerial imagery. Features automatic flight path adjustment to focus on detected anomalies.</p>
+        </div>
+      </div>
+      
+      <div class="image-card">
+        <img src="pipeline images\rov.webp" alt="Underwater ROV Integration" />
+        <div class="image-caption">
+          <h3>Underwater ROV System</h3>
+          <p>Marine-grade implementation for subsea pipelines with enhanced low-light detection capabilities and pressure-resistant housing.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Technology Stack</h2>
+    <div class="tech-badges">
+      <span class="tech-badge">YOLOv8</span>
+      <span class="tech-badge">Python 3.9</span>
+      <span class="tech-badge">OpenCV</span>
+      <span class="tech-badge">PyTorch</span>
+      <span class="tech-badge">Flask/FastAPI</span>
+      <span class="tech-badge">WebRTC</span>
+      <span class="tech-badge">TensorRT</span>
+      <span class="tech-badge">Docker</span>
+      <span class="tech-badge">JavaScript</span>
+      <span class="tech-badge">HTML5/CSS3</span>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Real-time Processing</h3>
+        <p>Optimized pipeline achieves 22 FPS processing on NVIDIA Jetson hardware with TensorRT acceleration.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Alert System</h3>
+        <p>Configurable audio-visual alerts with escalation protocols based on defect severity and location criticality.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Multi-Platform</h3>
+        <p>Browser-based interface works on Windows, Linux, macOS, iOS and Android with responsive design.</p>
+      </div>
+    </div>
+
+    <h2>Industry Applications</h2>
+    <ul>
+      <li><strong>Oil & Gas Pipelines:</strong> Prevent leaks and environmental disasters</li>
+      <li><strong>Water Utilities:</strong> Monitor municipal water infrastructure</li>
+      <li><strong>Industrial Plants:</strong> Process piping maintenance</li>
+      <li><strong>Marine Infrastructure:</strong> Offshore platform and undersea pipeline inspection</li>
+      <li><strong>Nuclear Facilities:</strong> Critical coolant system monitoring</li>
+    </ul>
+
+    <a href="index.html" class="back-link">Back to Portfolio</a>
+  </div>
+</body>
+</html>

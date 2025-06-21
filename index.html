@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zargham Elahi - AI & Machine Learning Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <style>
+    :root {
+      --primary: #6a0dad;
+      --primary-light: #8a4dff;
+      --secondary: #ff6ec4;
+      --gradient: linear-gradient(135deg, #6a0dad, #7b5aff, #ff6ec4);
+      --button-gradient: linear-gradient(to right, #7b5aff, #ff6ec4);
+      --bg: #faf9ff;
+      --text: #2d2d2d;
+      --text-light: #555;
+      --card-bg: #fff;
+      --shadow: 0 8px 24px rgba(106, 13, 173, 0.15);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      font-size: 0.8rem; /* Reduced by 20% */
+    }
+
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Navigation Bar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(106, 13, 173, 0.95);
+      backdrop-filter: blur(8px); /* Reduced by 20% */
+      box-shadow: 0 1.6px 16px rgba(106, 13, 173, 0.2); /* Reduced by 20% */
+      padding: 0.6rem 0; /* Reduced by 20% */
+      transition: var(--transition);
+    }
+
+    nav.scrolled {
+      padding: 0.4rem 0; /* Reduced by 20% */
+      background: rgba(106, 13, 173, 0.98);
+    }
+
+    .nav-container {
+      max-width: 960px; /* Reduced by 20% */
+      margin: auto;
+      padding: 0 1.6rem; /* Reduced by 20% */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.4rem; /* Reduced by 20% */
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.8px; /* Reduced by 20% */
+      display: flex;
+      align-items: center;
+    }
+
+    .logo span {
+      display: inline-block;
+      width: 9.6px; /* Reduced by 20% */
+      height: 9.6px; /* Reduced by 20% */
+      background: var(--secondary);
+      border-radius: 50%;
+      margin-left: 6.4px; /* Reduced by 20% */
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(0.95); }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem; /* Reduced by 20% */
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: var(--transition);
+      font-size: 0.8rem; /* Reduced by 20% */
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1.6px; /* Reduced by 20% */
+      left: 0;
+      bottom: -3.2px; /* Reduced by 20% */
+      background: var(--secondary);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: #ffe7ff;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: #ffe7ff;
+      font-weight: 600;
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .hamburger div {
+      width: 20px; /* Reduced by 20% */
+      height: 2.4px; /* Reduced by 20% */
+      background: white;
+      margin: 4px; /* Reduced by 20% */
+      transition: var(--transition);
+    }
+
+    /* Container - Keeping original home page style */
+    .container {
+      padding: 5.6rem 1.6rem 1.6rem; /* Reduced by 20% */
+      max-width: 960px; /* Reduced by 20% */
+      margin: auto;
+      background: white;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .text-section {
+      flex: 1 1 50%;
+      max-width: 480px; /* Reduced by 20% */
+    }
+
+    .text-section h1 {
+      font-size: 2rem; /* Reduced by 20% */
+      color: var(--primary);
+    }
+
+    .typed-role {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 0.96rem; /* Reduced by 20% */
+      margin-top: 0.8rem; /* Reduced by 20% */
+    }
+
+    .quote {
+      font-style: italic;
+      color: #5f2c82;
+      margin-top: 0.8rem; /* Reduced by 20% */
+    }
+
+    .btn {
+      margin-top: 1.2rem; /* Reduced by 20% */
+      padding: 0.6rem 1.2rem; /* Reduced by 20% */
+      font-weight: bold;
+      border: none;
+      border-radius: 20px; /* Reduced by 20% */
+      background: var(--button-gradient);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 3.2px 8px rgba(0, 0, 0, 0.1); /* Reduced by 20% */
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .skills-heading {
+      margin-top: 2rem; /* Reduced by 20% */
+      margin-bottom: 0.8rem; /* Reduced by 20% */
+      font-size: 1.2rem; /* Reduced by 20% */
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9.6px; /* Reduced by 20% */
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px); /* Reduced by 20% */
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .badge {
+      background: #f3f0ff;
+      color: var(--primary);
+      padding: 0.48rem 0.96rem; /* Reduced by 20% */
+      border-radius: 16px; /* Reduced by 20% */
+      font-weight: 600;
+      border: 1px solid #c2b6ff;
+      display: flex;
+      align-items: center;
+      gap: 4.8px; /* Reduced by 20% */
+      box-shadow: 0 0 6.4px rgba(106, 13, 173, 0.2); /* Reduced by 20% */
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .badge:nth-child(1) { animation-delay: 0.2s; }
+    .badge:nth-child(2) { animation-delay: 0.4s; }
+    .badge:nth-child(3) { animation-delay: 0.6s; }
+    .badge:nth-child(4) { animation-delay: 0.8s; }
+    .badge:nth-child(5) { animation-delay: 1s; }
+
+    .badge:hover {
+      background: #e1d9ff;
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(106, 13, 173, 0.4); /* Reduced by 20% */
+    }
+
+    .icon {
+      font-size: 0.96rem; /* Reduced by 20% */
+    }
+
+    .image-section {
+      flex: 1 1 40%;
+      text-align: center;
+    }
+
+    .image-section img {
+      max-width: 100%;
+      border-radius: 12.8px; /* Reduced by 20% */
+      background: white;
+      padding: 0.8rem; /* Reduced by 20% */
+    }
+
+    /* Projects Section - New improved style */
+    #projects {
+      background: #f5f2ff;
+      clip-path: polygon(0 0%, 100% 0, 100% 100%, 0% 100%);
+      padding: 6.4rem 1.6rem; /* Reduced by 20% */
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--primary);
+      font-size: 2rem; /* Reduced by 20% */
+      margin-bottom: 2.4rem; /* Reduced by 20% */
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 48px; /* Reduced by 20% */
+      height: 3.2px; /* Reduced by 20% */
+      background: var(--gradient);
+      bottom: -8px; /* Reduced by 20% */
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 1.6px; /* Reduced by 20% */
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Reduced by 20% */
+      gap: 2rem; /* Reduced by 20% */
+      max-width: 960px; /* Reduced by 20% */
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 16px; /* Reduced by 20% */
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 1;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px); /* Reduced by 20% */
+      box-shadow: 0 16px 32px rgba(106, 13, 173, 0.25); /* Reduced by 20% */
+    }
+
+    .project-card:hover::before {
+      opacity: 0.05;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 160px; /* Reduced by 20% */
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 1.2rem; /* Reduced by 20% */
+      position: relative;
+      z-index: 2;
+    }
+
+    .project-title {
+      font-size: 1.12rem; /* Reduced by 20% */
+      font-weight: 700;
+      margin-bottom: 0.6rem; /* Reduced by 20% */
+      color: var(--primary);
+    }
+
+    .project-desc {
+      font-size: 0.76rem; /* Reduced by 20% */
+      color: var(--text-light);
+      margin-bottom: 1.2rem; /* Reduced by 20% */
+      line-height: 1.5;
+    }
+
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.48rem 1.2rem; /* Reduced by 20% */
+      background: var(--button-gradient);
+      border: none;
+      border-radius: 20px; /* Reduced by 20% */
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 3.2px 12px rgba(0, 0, 0, 0.1); /* Reduced by 20% */
+    }
+
+    .project-btn:hover {
+      background: linear-gradient(to right, #ff6ec4, #7b5aff);
+      transform: translateX(4px); /* Reduced by 20% */
+    }
+
+    .project-btn i {
+      margin-left: 4px; /* Reduced by 20% */
+      transition: var(--transition);
+    }
+
+    .project-btn:hover i {
+      transform: translateX(2.4px); /* Reduced by 20% */
+    }
+
+    /* Articles Section - Infinite Carousel Style */
+    #articles {
+      max-width: 960px; /* Reduced by 20% */
+      margin: 0 auto;
+      padding: 4.8rem 1.6rem; /* Reduced by 20% */
+    }
+
+    .carousel-container {
+      overflow: hidden;
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(106, 13, 173, 0.3);
+      background: rgba(255 255 255 / 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(106, 13, 173, 0.2);
+      user-select: none;
+    }
+
+    .slider-track {
+      display: flex;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .card {
+      flex: 0 0 240px;
+      margin: 0.8rem;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6.4px 16px rgba(0, 0, 0, 0.1);
+      background: white;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 9.6px 24px rgba(106, 13, 173, 0.4);
+      z-index: 10;
+    }
+
+    .card img {
+      width: 100%;
+      height: 144px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 0.8rem 1rem 1.2rem;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--primary);
+    }
+
+    .card-summary {
+      font-size: 0.76rem;
+      color: var(--text-light);
+      margin-bottom: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: var(--text-light);
+      margin-bottom: 0.8rem;
+    }
+
+    .card-date {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-reading-time {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-meta i {
+      font-size: 0.8rem;
+      color: var(--primary-light);
+    }
+
+    .read-more {
+      display: inline-block;
+      background:  var(--button-gradient);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .read-more:hover {
+      background: linear-gradient(to right, #ff6ec4, #7b5aff);
+    }
+
+    /* Gradient sliding bar below carousel */
+    .gradient-bar {
+      height: 4.8px;
+      background: var(--gradient);
+      background-size: 600% 600%;
+      animation: gradientShift 6s ease infinite;
+      border-radius: 8px;
+      margin-top: 8px;
+      width: 100%;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Contact Section - New improved style */
+    #contact {
+      background: #f5f2ff;
+      clip-path: polygon(0 0%, 100% 0, 100% 100%, 0% 100%);
+      padding: 6.4rem 1.6rem; /* Reduced by 20% */
+    }
+
+    .contact-container {
+      max-width: 640px; /* Reduced by 20% */
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-text {
+      font-size: 0.88rem; /* Reduced by 20% */
+      color: var(--text-light);
+      margin-bottom: 2.4rem; /* Reduced by 20% */
+      max-width: 480px; /* Reduced by 20% */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem; /* Reduced by 20% */
+      margin-bottom: 1.6rem; /* Reduced by 20% */
+    }
+
+    .form-group {
+      position: relative;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1.2rem; /* Reduced by 20% */
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem; /* Reduced by 20% */
+      border: 1px solid #ddd;
+      border-radius: 8px; /* Reduced by 20% */
+      background: white;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 2.4px rgba(106, 13, 173, 0.1); /* Reduced by 20% */
+    }
+
+    textarea.form-control {
+      min-height: 120px; /* Reduced by 20% */
+      resize: vertical;
+    }
+
+    .submit-btn {
+      grid-column: span 2;
+      justify-self: center;
+      margin-top: 0.8rem; /* Reduced by 20% */
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem; /* Reduced by 20% */
+      margin-top: 2.4rem; /* Reduced by 20% */
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px; /* Reduced by 20% */
+      height: 40px; /* Reduced by 20% */
+      border-radius: 50%;
+      background: white;
+      color: var(--primary);
+      font-size: 1.2rem; /* Reduced by 20% */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Reduced by 20% */
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      transform: translateY(-4px); /* Reduced by 20% */
+      color: white;
+      background: var(--gradient);
+    }
+
+    /* Footer - New improved style */
+    footer {
+      background: var(--gradient);
+      color: white;
+      padding: 2.4rem 0.8rem; /* Reduced by 20% */
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 960px; /* Reduced by 20% */
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Reduced by 20% */
+      gap: 1.6rem; /* Reduced by 20% */
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      font-size: 1.04rem; /* Reduced by 20% */
+      margin-bottom: 1.2rem; /* Reduced by 20% */
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      width: 32px; /* Reduced by 20% */
+      height: 2.4px; /* Reduced by 20% */
+      background: var(--secondary);
+      bottom: -6.4px; /* Reduced by 20% */
+      left: 0;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.64rem; /* Reduced by 20% */
+    }
+
+    .footer-links a {
+      color: #e1d9ff;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: white;
+      transform: translateX(4px); /* Reduced by 20% */
+    }
+
+    .footer-contact p {
+      margin-bottom: 0.8rem; /* Reduced by 20% */
+      display: flex;
+      align-items: center;
+      gap: 8px; /* Reduced by 20% */
+    }
+
+    .footer-contact i {
+      color: var(--secondary);
+    }
+
+    .copyright {
+      margin-top: 2.4rem; /* Reduced by 20% */
+      padding-top: 1.6rem; /* Reduced by 20% */
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.72rem; /* Reduced by 20% */
+      opacity: 0.8;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px; /* Reduced by 20% */
+      right: 24px; /* Reduced by 20% */
+      width: 40px; /* Reduced by 20% */
+      height: 40px; /* Reduced by 20% */
+      background: var(--gradient);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.96rem; /* Reduced by 20% */
+      box-shadow: 0 4px 16px rgba(106, 13, 173, 0.3); /* Reduced by 20% */
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-4px); /* Reduced by 20% */
+    }
+
+     /* Responsive Design */
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 5.6rem; /* Reduced by 20% */
+      }
+
+      .text-section, .image-section {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+
+      .image-section {
+        margin-top: 2.4rem; /* Reduced by 20% */
+      }
+
+      .image-section::before {
+        display: none;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(224px, 1fr)); /* Reduced by 20% */
+      }
+
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full-width {
+        grid-column: span 1;
+      }
+
+      .submit-btn {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 70%;
+        background: var(--primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%);
+        transition: var(--transition);
+        z-index: 1000;
+      }
+
+      .nav-links.active {
+        transform: translateX(0);
+      }
+
+      .nav-links a {
+        font-size: 0.96rem; /* Reduced by 20% */
+        margin: 0.8rem 0; /* Reduced by 20% */
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .hamburger.active div:nth-child(1) {
+        transform: rotate(-45deg) translate(-4px, 4.8px); /* Reduced by 20% */
+      }
+
+      .hamburger.active div:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active div:nth-child(3) {
+        transform: rotate(45deg) translate(-4px, -4.8px); /* Reduced by 20% */
+      }
+
+      .text-section h1 {
+        font-size: 2rem; /* Reduced by 20% */
+      }
+
+      .section-title {
+        font-size: 1.6rem; /* Reduced by 20% */
+      }
+
+      #projects, #contact {
+        clip-path: none;
+        padding: 4rem 1.6rem; /* Reduced by 20% */
+      }
+
+      /* Carousel adjustments for mobile */
+      .card {
+        flex: 0 0 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .text-section h1 {
+        font-size: 1.6rem; /* Reduced by 20% */
+      }
+
+      .typed-role {
+        font-size: 0.88rem; /* Reduced by 20% */
+      }
+
+      .btn {
+        padding: 0.6rem 1.2rem; /* Reduced by 20% */
+      }
+
+      .section {
+        padding: 3.2rem 1.2rem; /* Reduced by 20% */
+      }
+
+      .section-title {
+        font-size: 1.44rem; /* Reduced by 20% */
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px); /* Reduced by 20% */
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Particles.js container */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo">Zargham<span></span></div>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="nav-links">
+        <a href="#home" class="active" onclick="scrollToSection('home')">HOME</a>
+        <a href="#projects" onclick="scrollToSection('projects')">PROJECTS</a>
+        <a href="#articles" onclick="scrollToSection('articles')">ARTICLES</a>
+        <a href="#contact" onclick="scrollToSection('contact')">CONTACT</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Main Content - Original home page design -->
+  <div class="container" id="home">
+    <div class="text-section">
+      <h1>Hi, I am Zargham Elahi</h1>
+      <div class="typed-role">
+        I am a <span id="typed"></span>
+      </div>
+      <p class="quote">"A passionate person for AI and its charms in the society ready to dive in and find new ways"</p>
+
+      <button class="btn" onclick="downloadCV()">Download CV</button>
+
+<script>
+  function downloadCV() {
+    const link = document.createElement('a');
+    link.href = 'Zargham_Elahi_CV.pdf'; // Update with the correct file path
+    link.download = 'Zargham_Elahi_CV.pdf'; // Name of the downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+</script>
+      
+
+      <!-- Skills Section -->
+      <h2 class="skills-heading">Skills & Technologies</h2>
+      <div class="skills">
+        <span class="badge"><span class="icon">🐍</span>Python</span>
+        <span class="badge"><span class="icon">🔢</span>TensorFlow</span>
+        <span class="badge"><span class="icon">🔥</span>PyTorch</span>
+        <span class="badge"><span class="icon">⚛️</span>React</span>
+        <span class="badge"><span class="icon">📷</span>OpenCV</span>
+      </div>
+    </div>
+
+    <div class="image-section">
+      <img src="zargham1.png" alt="Zargham Elahi" />
+    </div>
+  </div>
+
+  <!-- Projects Section - New improved design -->
+  <section id="projects">
+    <h2 class="section-title">My Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img class="project-image" src="frc project.avif" alt="AI Prediction App" />
+        <div class="project-content">
+          <h3 class="project-title">FRC Strengh Prediction</h3>
+          <p class="project-desc">A smart web tool that predicts fiber reinforced concrete strength using machine learning with 98% accuracy, enabling engineers to design more durable and cost-efficient structures.
+</p>
+          <a href="project1.html" class="project-btn">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img class="project-image" src="pipeline project.png" alt="Data Dashboard" />
+        <div class="project-content">
+          <h3 class="project-title">Pipeline Inspection</h3>
+          <p class="project-desc">An AI-powered system that uses real-time video analysis and YOLOv8 to detect pipeline corrosion and fractures with 94% accuracy, ensuring faster and safer infrastructure inspections.
+</p>
+          <a href="project2.html" class="project-btn">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img class="project-image" src="dyslexia project.jpg" alt="Object Detection App" />
+        <div class="project-content">
+          <h3 class="project-title">Dyslexia Detection</h3>
+          <p class="project-desc">A mobile application that uses a CNN model to analyze children's videos and detect signs of dyslexia with 94% accuracy, aiding early diagnosis and personalized support.
+</p>
+          <a href="project3.html" class="project-btn">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+  <!--   <div class="project-card">
+        <img class="project-image" src="project4.webp" alt="PDF Automation Tool" />
+        <div class="project-content">
+          <h3 class="project-title">Smart PDF Extractor</h3>
+          <p class="project-desc">Automation tool that reduces manual data entry by 70% using OCR and NLP to extract and categorize information from PDF documents.</p>
+          <a href="project4.html" class="project-btn">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img class="project-image" src="project5.webp" alt="AI Chatbot" />
+        <div class="project-content">
+          <h3 class="project-title">AI Customer Support Chatbot</h3>
+          <p class="project-desc">NLP-powered chatbot that handles 80% of customer inquiries automatically, reducing response time from hours to seconds.</p>
+          <a href="project5.html" class="project-btn">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>  --> 
+    </div>
+  </section>
+
+  <!-- Articles Section - Infinite Carousel -->
+  <section id="articles">
+    <h2 class="section-title">Latest Articles</h2>
+    <div class="carousel-container" aria-label="Featured Articles Carousel">
+      <div class="slider-track" id="sliderTrack">
+        <!-- Original 5 cards -->
+        <div class="card" tabindex="0">
+          <img src="neural.jpg" alt="AI in 2025" />
+          <div class="card-content">
+            <h2 class="card-title">How Neural Networks Really Learn and Work</h2>
+                        <div class="card-meta">
+              <span class="card-date"><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+              <span class="card-reading-time"><i class="far fa-clock"></i> 15 min read</span>
+            </div>
+            <p class="card-summary">A simple explanation of what makes neural networks tick.</p>
+            <a href="article1.html" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="card" tabindex="0">
+          <img src="ai.jpg" alt="AI in 2025" />
+          <div class="card-content">
+            <h2 class="card-title">Why AI Isn’t Magic: It’s Math, Data, and Patience</h2>
+                        <div class="card-meta">
+              <span class="card-date"><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+              <span class="card-reading-time"><i class="far fa-clock"></i> 12 min read</span>
+            </div>
+            <p class="card-summary">Breaking down the real ingredients behind AI’s power.</p>
+            <a href="article2.html" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="card" tabindex="0">
+          <img src="nlp.jpg" alt="AI in 2025" />
+          <div class="card-content">
+            <h2 class="card-title">How AI Understands Language: An NLP Guide</h2>
+                        <div class="card-meta">
+              <span class="card-date"><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+              <span class="card-reading-time"><i class="far fa-clock"></i> 16 min read</span>
+            </div>
+            <p class="card-summary">A beginner’s guide to how machines understands language.</p>
+            <a href="article3.html" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="card" tabindex="0">
+          <img src="data.png" alt="AI in 2025" />
+          <div class="card-content">
+            <h2 class="card-title">How I Clean Data Before Training an AI Model</h2>
+                        <div class="card-meta">
+              <span class="card-date"><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+              <span class="card-reading-time"><i class="far fa-clock"></i> 14 min read</span>
+            </div>
+            <p class="card-summary">My step-by-step process for preparing clean, reliable datasets.</p>
+            <a href="article4.html" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="card" tabindex="0">
+          <img src="school.webp" alt="AI in 2025" />
+          <div class="card-content">
+            <h2 class="card-title">What Schools Should Be Teaching About AI</h2>
+                        <div class="card-meta">
+              <span class="card-date"><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+              <span class="card-reading-time"><i class="far fa-clock"></i> 8 min read</span>
+            </div>
+            <p class="card-summary">A look at the AI lessons students need—but aren’t getting.</p>
+            <a href="article5.html" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <!-- Duplicate cards for seamless scroll -->
+        <div class="card" tabindex="0">
+          <img src="neural.jpg" alt="AI in 2025" />
+          <div class="card-content">
+            <h2 class="card-title">How Neural Networks Really Learn and Work</h2>
+                        <div class="card-meta">
+              <span class="card-date"><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+              <span class="card-reading-time"><i class="far fa-clock"></i> 15 min read</span>
+            </div>
+            <p class="card-summary">A simple explanation of what makes neural networks tick.</p>
+            <a href="article1.html" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="card" tabindex="0">
+          <img src="ai.jpg" alt="AI in 2025" />
+          <div class="card-content">
+            <h2 class="card-title">Why AI Isn’t Magic: It’s Math, Data, and Patience</h2>
+                        <div class="card-meta">
+              <span class="card-date"><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+              <span class="card-reading-time"><i class="far fa-clock"></i> 12 min read</span>
+            </div>
+            <p class="card-summary">Breaking down the real ingredients behind AI’s power.</p>
+            <a href="article2.html" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="card" tabindex="0">
+          <img src="nlp.jpg" alt="AI in 2025" />
+          <div class="card-content">
+            <h2 class="card-title">How AI Understands Language: An NLP Guide</h2>
+                        <div class="card-meta">
+              <span class="card-date"><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+              <span class="card-reading-time"><i class="far fa-clock"></i> 16 min read</span>
+            </div>
+            <p class="card-summary">A beginner’s guide to how machines understands language.</p>
+            <a href="article3.html" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="card" tabindex="0">
+          <img src="data.png" alt="AI in 2025" />
+          <div class="card-content">
+            <h2 class="card-title">How I Clean Data Before Training an AI Model</h2>
+                        <div class="card-meta">
+              <span class="card-date"><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+              <span class="card-reading-time"><i class="far fa-clock"></i> 14 min read</span>
+            </div>
+            <p class="card-summary">My step-by-step process for preparing clean, reliable datasets.</p>
+            <a href="article4.html" class="read-more">Read More</a>
+          </div>
+        </div>
+
+        <div class="card" tabindex="0">
+          <img src="school.webp" alt="AI in 2025" />
+          <div class="card-content">
+            <h2 class="card-title">What Schools Should Be Teaching About AI</h2>
+                        <div class="card-meta">
+              <span class="card-date"><i class="far fa-calendar-alt"></i> June 15, 2025</span>
+              <span class="card-reading-time"><i class="far fa-clock"></i> 8 min read</span>
+            </div>
+            <p class="card-summary">A look at the AI lessons students need—but aren’t getting.</p>
+            <a href="article5.html" class="read-more">Read More</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="gradient-bar"></div>
+  </section>
+
+  <!-- Contact Section - New improved design -->
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="contact-text">I'm currently open to freelance opportunities, collaborations on exciting AI projects, or just a friendly chat about technology. Feel free to reach out!</p>
+    
+    <div class="contact-container">
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Your Email" required>
+        </div>
+        <div class="form-group full-width">
+          <input type="text" class="form-control" placeholder="Subject">
+        </div>
+        <div class="form-group full-width">
+          <textarea class="form-control" placeholder="Your Message" required></textarea>
+        </div>
+        <div class="form-group full-width submit-btn">
+          <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
+        </div>
+      </form>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/zarghamelahi" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/zarghamelahi" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/zarghamelahi" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://medium.com/@zarghamelahi" class="social-link" target="_blank"><i class="fab fa-medium-m"></i></a>
+        <a href="mailto:zargham.elahi@example.com" class="social-link"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer - New improved design -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Zargham Elahi</h3>
+        <p>AI & Machine Learning Specialist focused on creating innovative solutions that leverage cutting-edge technologies to solve real-world problems.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#articles">Articles</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Info</h3>
+        <div class="footer-contact">
+          <p><i class="fas fa-envelope"></i> zarghamelahi1@gmail.com</p>
+          <p><i class="fas fa-phone"></i> +92 3367303420</p>
+          <p><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</p>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Zargham Elahi. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Typed.js Script -->
+  <script>
+    // Typed.js initialization
+    var typed = new Typed('#typed', {
+      strings: ["Machine Learning Engineer", "AI Researcher", "Deep Learning Specialist", "Problem Solver"],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true,
+      smartBackspace: true
+    });
+
+    // Smooth scroll function for nav links
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('active');
+      } else {
+        backToTopBtn.classList.remove('active');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Highlight active nav link on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Animation on scroll for skills badges
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.badge');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+        
+        if (elementPosition < screenPosition) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+
+    window.addEventListener('scroll', animateOnScroll);
+    // Trigger once on page load
+    animateOnScroll();
+
+    // Infinite carousel animation
+    (() => {
+      const slider = document.getElementById('sliderTrack');
+      const cards = slider.children;
+      const cardCount = cards.length / 2; // 5 original + 5 duplicate
+
+      // Calculate width of one set of cards
+      let cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight) + parseInt(getComputedStyle(cards[0]).marginLeft);
+      let scrollWidth = cardWidth * cardCount;
+
+      let posX = 0; // current translateX
+      const speed = 0.5; // pixels per frame (adjust speed here)
+
+      function animate() {
+        posX -= speed;
+        if (posX <= -scrollWidth) {
+          posX = 0; // reset to start for seamless loop
+        }
+        slider.style.transform = `translateX(${posX}px)`;
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
+
+</body>
+</html>
